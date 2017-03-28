@@ -13,19 +13,34 @@ library(flexdashboard)
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Liquidity
 
-```{r}
+The liquidity is trending down due to global reflation.
 
+```{r test1, echo=FALSE}
+library(dygraphs)
+liquidity = read.csv("liquidity.csv")
+myts2 <- ts(liquidity, start=c(1991, 1), end=c(2022, 11), frequency=12)
+dygraph(myts2, main = "National Liquidity (M2 YoY)") %>%
+dySeries(c("lwr", "fit", "upr"), label = "M2 YoY") %>%
+dyRangeSelector()
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Inflation
 
-```{r}
+Main driver for inflation in 2017 is increasing fuel prices, electricity tariff and commodity prices.
 
+
+```{r test, echo=FALSE}
+library(dygraphs)
+mydata = read.csv("inflasiYoY.csv")
+myts<-ts(mydata, frequency=12, start=c(2003,1))
+dygraph(myts, main="Inflation is Projected to Increase") %>%
+  dyAxis("y", label="Inflation YoY") %>%
+  dyRangeSelector()
 ```
 
 ### Chart C
