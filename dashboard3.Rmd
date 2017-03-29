@@ -1,0 +1,74 @@
+---
+title: "The Indonesian Economist"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: bootstrap
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Macroeconomics
+=====================================  
+    
+Column {data-width=600}
+-------------------------------------
+    
+### Liquidity
+
+The liquidity is trending down due to global reflation.
+    
+```{r test1, echo=FALSE}
+library(dygraphs)
+liquidity = read.csv("liquidity.csv")
+myts2 <- ts(liquidity, start=c(1991, 1), end=c(2022, 11), frequency=12)
+dygraph(myts2, main = "National Liquidity (M2 YoY)") %>%
+dySeries(c("lwr", "fit", "upr"), label = "M2 YoY") %>%
+dyRangeSelector()
+```
+   
+Column {data-width=400}
+-------------------------------------
+   
+### Chart 2
+
+```{r test, echo=FALSE}
+library(dygraphs)
+mydata = read.csv("inflasiYoY.csv")
+myts<-ts(mydata, frequency=12, start=c(2003,1))
+dygraph(myts, main="Inflation is Projected to Increase") %>%
+  dyAxis("y", label="Inflation YoY") %>%
+  dyRangeSelector()
+```  
+ 
+### Chart 3
+    
+```{r}
+```
+
+Banking {data-orientation=rows}
+=====================================     
+   
+Row {data-height=600}
+-------------------------------------
+
+### Chart 1
+
+```{r}
+```
+
+Row {data-height=400}
+-------------------------------------
+   
+### Chart 2
+
+```{r}
+```   
+    
+### Chart 3
+
+```{r}
+```
