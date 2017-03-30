@@ -20,15 +20,7 @@ Column {data-width=100}
 -------------------------------------
 
 
-### Politic o meter
-```{r}
-rate <- 91
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-### Bank o meter
+### Macro Condition
 ```{r}
 rate <- 61
 gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
@@ -36,35 +28,37 @@ gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
 ))
 ```
 
-### Politic o meter
+### Banking Condition
 ```{r}
-rate <- 91
+rate <- 47
 gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
   success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
 ))
 ```
 
-### Bank o meter
+### Politic o meter
 ```{r}
-rate <- 61
+rate <- 21
 gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
   success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
 ))
 ```
+
+
 
 Column {data-width=200}
 -------------------------------------
    
-### Chart 2
+### Chart 1
 
-```{r test, echo=FALSE}
+```{r test1, echo=FALSE}
 library(dygraphs)
-mydata = read.csv("inflasiYoY.csv")
-myts<-ts(mydata, frequency=12, start=c(2003,1))
-dygraph(myts, main="Inflation is Projected to Increase") %>%
-  dyAxis("y", label="Inflation YoY") %>%
-  dyRangeSelector()
-```  
+liquidity = read.csv("Inflasi_yoy.csv")
+myts2 <- ts(liquidity, start=c(2010, 1), end=c(2019, 2), frequency=12)
+dygraph(myts2, main = "Inflation (YoY)") %>%
+dySeries(c("lwr", "fit", "upr"), label = "Inflation YoY") %>%
+dyRangeSelector()
+```
  
 ### Chart 3
     
@@ -78,14 +72,14 @@ Column {data-width=200}
 
 ```{r test2, echo=FALSE}
 library(dygraphs)
-mydata = read.csv("inflasiYoY.csv")
-myts<-ts(mydata, frequency=12, start=c(2003,1))
-dygraph(myts, main="Inflation is Projected to Increase") %>%
-  dyAxis("y", label="Inflation YoY") %>%
-  dyRangeSelector()
-```  
+liquidity = read.csv("Kurs.csv")
+myts2 <- ts(liquidity, start=c(2011, 1), end=c(2019, 3), frequency=12)
+dygraph(myts2, main = "IDR/USD") %>%
+dySeries(c("lwr", "fit", "upr"), label = "IDR/USD") %>%
+dyRangeSelector()
+```
  
-### Chart 3
+### Chart 4
     
 ```{r}
 ```
@@ -98,7 +92,13 @@ Row {data-height=600}
 
 ### Chart 1
 
-```{r}
+```{r test3, echo=FALSE}
+library(dygraphs)
+liquidity = read.csv("m2_yoy.csv")
+myts2 <- ts(liquidity, start=c(2008, 9), end=c(2018, 12), frequency=12)
+dygraph(myts2, main = "M2 (YoY)") %>%
+dySeries(c("lwr", "fit", "upr"), label = "M2 (YoY)") %>%
+dyRangeSelector()
 ```
 
 Row {data-height=400}
@@ -106,12 +106,24 @@ Row {data-height=400}
    
 ### Chart 2
 
-```{r}
+```{r test4, echo=FALSE}
+library(dygraphs)
+liquidity = read.csv("npl.csv")
+myts2 <- ts(liquidity, start=c(2011, 1), end=c(2019, 1), frequency=12)
+dygraph(myts2, main = "NPL (%)") %>%
+dySeries(c("lwr", "fit", "upr"), label = "NPL (%)") %>%
+dyRangeSelector()
 ```   
     
 ### Chart 3
 
-```{r}
+```{r test5, echo=FALSE}
+library(dygraphs)
+liquidity = read.csv("kredit_yoy.csv")
+myts2 <- ts(liquidity, start=c(2012, 1), end=c(2019, 1), frequency=12)
+dygraph(myts2, main = "Credit (YoY)") %>%
+dySeries(c("lwr", "fit", "upr"), label = "Credit (YoY)") %>%
+dyRangeSelector()
 ```
 
 US {data-orientation=rows}
