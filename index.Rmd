@@ -51,18 +51,28 @@ Column {data-width=200}
    
 ### Chart 1
 
-```{r test1, echo=FALSE}
+```{r test1, fig.width=6, fig.height=2.5}
 library(dygraphs)
 liquidity = read.csv("Inflasi_yoy.csv")
 myts2 <- ts(liquidity, start=c(2010, 1), end=c(2019, 2), frequency=12)
 dygraph(myts2, main = "Inflation (YoY)") %>%
 dySeries(c("lwr", "fit", "upr"), label = "Inflation YoY") %>%
+ dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+   dyShading(from = "2017-2-1", to = "2019-2-1", color = "#FFE6E6") %>%
 dyRangeSelector()
 ```
  
 ### Chart 3
     
-```{r}
+```{r test6, fig.width=6, fig.height=2.5}
+library(dygraphs)
+liquidity = read.csv("ihsg.csv")
+myts2 <- ts(liquidity, start=c(2011, 1), end=c(2019, 3), frequency=12)
+dygraph(myts2, main = "IHSG") %>%
+dySeries(c("lwr", "fit", "upr"), label = "IHSG") %>%
+  dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+  dyShading(from = "2017-3-1", to = "2019-3-1", color = "#FFE6E6") %>%
+dyRangeSelector()
 ```
 
 Column {data-width=200}
@@ -70,18 +80,20 @@ Column {data-width=200}
    
 ### Chart 2
 
-```{r test2, echo=FALSE}
+```{r test2, fig.width=6, fig.height=2.5}
 library(dygraphs)
 liquidity = read.csv("Kurs.csv")
 myts2 <- ts(liquidity, start=c(2011, 1), end=c(2019, 3), frequency=12)
 dygraph(myts2, main = "IDR/USD") %>%
 dySeries(c("lwr", "fit", "upr"), label = "IDR/USD") %>%
+  dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+  dyShading(from = "2017-3-1", to = "2019-3-1", color = "#FFE6E6") %>%
 dyRangeSelector()
 ```
  
 ### Chart 4
     
-```{r}
+```{r, fig.width=6, fig.height=2.5}
 ```
 
 Banking {data-orientation=rows}
@@ -98,6 +110,8 @@ liquidity = read.csv("m2_yoy.csv")
 myts2 <- ts(liquidity, start=c(2008, 9), end=c(2018, 12), frequency=12)
 dygraph(myts2, main = "M2 (YoY)") %>%
 dySeries(c("lwr", "fit", "upr"), label = "M2 (YoY)") %>%
+  dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+  dyShading(from = "2016-12-1", to = "2018-12-1", color = "#FFE6E6") %>%
 dyRangeSelector()
 ```
 
@@ -112,6 +126,8 @@ liquidity = read.csv("npl.csv")
 myts2 <- ts(liquidity, start=c(2011, 1), end=c(2019, 1), frequency=12)
 dygraph(myts2, main = "NPL (%)") %>%
 dySeries(c("lwr", "fit", "upr"), label = "NPL (%)") %>%
+  dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+  dyShading(from = "2017-1-1", to = "2019-1-1", color = "#FFE6E6") %>%
 dyRangeSelector()
 ```   
     
@@ -123,6 +139,8 @@ liquidity = read.csv("kredit_yoy.csv")
 myts2 <- ts(liquidity, start=c(2012, 1), end=c(2019, 1), frequency=12)
 dygraph(myts2, main = "Credit (YoY)") %>%
 dySeries(c("lwr", "fit", "upr"), label = "Credit (YoY)") %>%
+  dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+  dyShading(from = "2017-1-1", to = "2019-1-1", color = "#FFE6E6") %>%
 dyRangeSelector()
 ```
 
