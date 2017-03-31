@@ -63,10 +63,18 @@ Column {data-width=200}
 library(dygraphs)
 liquidity = read.csv("Inflasi_yoy.csv")
 myts2 <- ts(liquidity, start=c(2010, 1), end=c(2019, 2), frequency=12)
+
+presAnnotation <- function(dygraph, x, text) {
+  dygraph %>%
+    dyAnnotation(x, text, attachAtBottom = TRUE, width = 60, height = 25, tickHeight = 0)
+}
+
 dygraph(myts2, main = "Inflation (YoY)") %>%
   dySeries(c("lwr", "fit", "upr"), label = "Inflation YoY") %>%
    dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
    dyShading(from = "2017-2-1", to = "2019-2-1", color = "#FFE6E6") %>%
+  dyAnnotation("2017-2-1", text = "3.83 (Feb-17)", width = 80, height = 25, cssClass=3) %>%
+  presAnnotation("2018-2-1", text = "Forecast") %>%
 dyRangeSelector()
 ```
  
