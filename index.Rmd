@@ -63,10 +63,17 @@ Column {data-width=200}
 library(dygraphs)
 liquidity = read.csv("Inflasi_yoy.csv")
 myts2 <- ts(liquidity, start=c(2010, 1), end=c(2019, 2), frequency=12)
+
+presAnnotation <- function(dygraph, x, text) {dygraph %>%
+    dyAnnotation(x, text, attachAtBottom = TRUE, width = 60, height = 25, tickHeight = 0)}
+
 dygraph(myts2, main = "Inflation (YoY)") %>%
-  dySeries(c("lwr", "fit", "upr"), label = "Inflation YoY") %>%
-   dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
+  dySeries(c("lwr", "fit", "upr"), label = "Inflation YoY", color = "blue") %>%
+   dyOptions(axisLineWidth = 1.5, fillGraph = FALSE, drawGrid = FALSE) %>%
+  dyHighlight(highlightSeriesOpts = list(strokeWidth = 3)) %>%
    dyShading(from = "2017-2-1", to = "2019-2-1", color = "#FFE6E6") %>%
+  dyAnnotation("2017-2-1", text = "3.83 (Feb-17)", width = 80, height = 25, tickHeight = 0) %>%
+  presAnnotation("2018-2-1", text = "Forecast") %>%
 dyRangeSelector()
 ```
  
@@ -101,7 +108,24 @@ dyRangeSelector()
  
 ### Chart 4
     
-```{r, fig.width=6, fig.height=2.5}
+```{r , fig.width=8, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+library(plotly)
+x <- read.csv("inflasi_yoytes.csv")
+fore <- read.csv("inflasi_fore.csv")
+f1 <- list(family = "Arial, sans-serif", size = 10, color = "black")
+
+m <- x[which.max(x$Dates), ]
+a <- list(x = m$Dates, y = m$fit, text = ~paste(m$Dates, ': ', m$fit), xref = "x", yref = "y", showarrow = TRUE, arrowhead = 7, ax = 20, ay = -40)
+
+p <- plot_ly() %>%
+  add_lines(x = x$Dates, y = x$fit, type = 'scatter', mode = 'ribbons', color = I("black"), name = "observed") %>%
+  layout(annotations = a) %>%
+  add_ribbons(x = fore$Dates, ymin = fore$lwr, ymax = fore$upr, color = I("gray75"), name = "95% confidence") %>%
+  add_lines(x = fore$Dates, y = fore$fit, color = I("blue"), name = "prediction") %>%
+layout(title = "Inflasi", xaxis = list(rangeslider = list(type = "date"), dtick = 10, tickfont = f1), yaxis = list(title = "Inflasi"), showlegend = FALSE)
+
+
+p
 ```
 
 Banking {data-orientation=rows}
