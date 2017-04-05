@@ -121,7 +121,7 @@ p <- plot_ly() %>%
   add_lines(x = x$Dates, y = x$fit, type = 'scatter', mode = 'ribbons', color = I("black"), name = "observed") %>%
   add_ribbons(x = fore$Dates, ymin = fore$lwr, ymax = fore$upr, color = I("gray75"), name = "95% confidence") %>%
   add_lines(x = fore$Dates, y = fore$fit, color = I("blue"), name = "prediction") %>%
-layout(annotations = a, title = "Inflasi", xaxis = list(dtick = 10, tickfont = f1) , yaxis = list(title = "Inflasi"), showlegend = FALSE)
+layout(annotations = a, title = "Inflasi", xaxis = list(dtick = 10, tickfont = f1), yaxis = list(title = "Inflasi"), showlegend = FALSE)
   
 p
 ```
