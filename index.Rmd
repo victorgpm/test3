@@ -11,37 +11,15 @@ output:
 library(flexdashboard)
 ```
 
-Macroeconomics #1
+Macroeconomics #1 {data-orientation=column}
 =====================================  
 
-Column {data-width=100}
--------------------------------------
-
-
-### Macro Condition
-```{r}
-rate <- 77
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-### Banking Condition
-```{r}
-rate <- 47
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-
-
-Column {data-width=200}
+Column
 -------------------------------------
    
 ### Chart 1
 
-```{r , fig.width=8, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(plotly)
 x <- read.csv("m2mom.csv")
 fore <- read.csv("m2mom_fore.csv")
@@ -61,7 +39,7 @@ p
  
 ### Chart 3
     
-```{r , fig.width=8, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(plotly)
 x <- read.csv("Kurs.csv")
 fore <- read.csv("kurs_fore.csv")
@@ -79,12 +57,12 @@ layout(annotations = a, title = "Exchange Rate (IDR/USD)", xaxis = list(dtick = 
 p
 ```
 
-Column {data-width=200}
+Column
 -------------------------------------
    
 ### Chart 2
 
-```{r , fig.width=8, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(plotly)
 x <- read.csv("inflasimom.csv")
 fore <- read.csv("inflasimom_fore.csv")
@@ -104,7 +82,7 @@ p
 
 ### Chart 4
     
-```{r , fig.width=8, fig.height=4, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(plotly)
 x <- read.csv("ihsg.csv")
 fore <- read.csv("ihsg_fore.csv")
@@ -126,29 +104,7 @@ p
 Macroeconomics #2
 =====================================  
 
-Column {data-width=100}
--------------------------------------
-
-
-### Macro Condition
-```{r}
-rate <- 77
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-### Banking Condition
-```{r}
-rate <- 47
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-
-
-Column {data-width=200}
+Column
 -------------------------------------
    
 ### Chart 5
@@ -192,7 +148,7 @@ p
 ```
 
 
-Column {data-width=200}
+Column
 -------------------------------------
    
 ### Chart 6
@@ -224,28 +180,8 @@ p
 Banking
 =====================================     
    
-Column {data-width=100}
--------------------------------------
 
-
-### Macro Condition
-```{r}
-rate <- 77
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-### Banking Condition
-```{r}
-rate <- 47
-gauge(rate, min = 0, max = 100, symbol = '%', gaugeSectors(
-  success = c(80, 100), warning = c(40, 79), danger = c(0, 39)
-))
-```
-
-
-Column {data-width=200}
+Column
 -------------------------------------
    
 ### Chart 1
@@ -288,7 +224,7 @@ layout(annotations = a, title = "CAR", xaxis = list(dtick = 12, tickfont = f1), 
 p
 ```
 
-Column {data-width=200}
+Column
 -------------------------------------
    
 ### Chart 2
